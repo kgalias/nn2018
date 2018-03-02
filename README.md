@@ -11,4 +11,4 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 
 * Kurs deeplearning.ai: https://www.coursera.org/learn/neural-networks-deep-learning
 * Książka "Deep Learning" I. Goodfellow, Y. Bengio, A. Courville: www.deeplearningbook.org
-* Kurs Sieci Neuronowych + PyTorch: https://github.com/hunkim/PyTorchZeroToAll
+* Wstęp do sieci neuronowych z użyciem PyTorch: https://github.com/hunkim/PyTorchZeroToAll
