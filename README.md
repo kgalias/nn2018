@@ -5,9 +5,10 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 
 ## Terminy
 
-* 2a: 5.03, 23:59
-* 3a: 12.03, 23:59
-* 4a: 26.03, 23:59
+* 2: 5.03, 23:59
+* 3: 12.03, 23:59
+* 4: 26.03, 23:59
+* 5: 9.04, 23:59
 
 ## Dodatkowe materiały
 
