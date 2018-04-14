@@ -42,11 +42,14 @@ def get_data(N=1000):
     
     return (x_train, y_train), (x_test, y_test)
 
-def build_mlp(input_dim, output_dim, hidden_dim=512):
+def build_mlp(input_dim, output_dim, hidden_dims=[512]):
     model = torch.nn.Sequential()
-    model.add_module("linear_1", torch.nn.Linear(input_dim, hidden_dim, bias=True))
-    model.add_module("nonlinearity_1", torch.nn.ReLU())
-    model.add_module("linear_2", torch.nn.Linear(hidden_dim, output_dim, bias=True))
+    previous_dim = input_dim
+    for id, D in enumerate(hidden_dims):
+        model.add_module("linear_{}".format(id), torch.nn.Linear(previous_dim, D, bias=True))
+        model.add_module("nonlinearity_{}".format(id), torch.nn.ReLU())
+        previous_dim = D
+    model.add_module("final_layer", torch.nn.Linear(D, output_dim, bias=True))
     return model
 
 def build_logreg(input_dim, output_dim, hidden_dim=512):
@@ -64,6 +67,11 @@ def step(model, loss, optimizer, x_val, y_val):
     x = Variable(x_val, requires_grad=False)
     y = Variable(y_val, requires_grad=False)
 
+    is_cuda = torch.cuda.is_available()
+    if is_cuda:
+        x = x.cuda()
+        y = y.cuda()
+    
     # Reset gradient
     optimizer.zero_grad()
 
@@ -81,7 +89,11 @@ def step(model, loss, optimizer, x_val, y_val):
 
 def predict(model, x_val):
     x = Variable(x_val, requires_grad=False)
-    output = model.forward(x).data.numpy()
+    is_cuda = torch.cuda.is_available()
+    if is_cuda:
+        x = x.cuda()
+        
+    output = model.forward(x).cpu().data.numpy()
 
     if output.shape[1] >= 2:
         return output.argmax(axis=1)
@@ -102,6 +114,12 @@ def train(model, loss, optim,
     n_examples, n_features = x_train.size()
     history = {"acc": [], "test_acc": []}
     for i in tqdm.tqdm(range(n_epochs), total=n_epochs):
+        
+        # Ugly way to shuffle dataset
+        ids = np.random.choice(len(x_train), len(x_train), replace=False)
+        x_train = torch.from_numpy(x_train.numpy()[ids])
+        y_train = torch.from_numpy(y_train.numpy()[ids])
+        
         cost = 0.
         num_batches = n_examples // batch_size
         for k in range(num_batches):
