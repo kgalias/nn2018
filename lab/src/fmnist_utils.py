@@ -52,12 +52,6 @@ def build_mlp(input_dim, output_dim, hidden_dims=[512]):
     model.add_module("final_layer", torch.nn.Linear(D, output_dim, bias=True))
     return model
 
-def build_logreg(input_dim, output_dim, hidden_dim=512):
-    model = torch.nn.Sequential()
-    model.add_module("linear_2", torch.nn.Linear(input_dim, output_dim, bias=True))
-    model.add_module("nonlinearity_1", torch.nn.Softmax())
-    return model
-
 def build_linreg(input_dim, output_dim, hidden_dim=512):
     model = torch.nn.Sequential()
     model.add_module("linear_2", torch.nn.Linear(input_dim, output_dim, bias=True))
