@@ -105,6 +105,5 @@ def measure_stability_deepfool(model, x_train, y_train, loss, N=1000):
             margins.append(np.linalg.norm(r))
         else:
             pass
-    if len(margins) != len(x_train_N):
-        print("Failed deepfool")
+
     return np.mean(margins)
