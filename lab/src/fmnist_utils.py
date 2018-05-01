@@ -13,14 +13,19 @@ from torch import nn
 from torch.autograd import Variable
 from torch import optim
 
-from keras.datasets import fashion_mnist
+from keras.datasets import fashion_mnist, mnist
 from keras.utils import np_utils
 
 import matplotlib.pylab as plt
 
-def get_data(N=1000):
+def get_data(N=1000, which="fmnist"):
     # Get FashionMNIST (see 1b_FMNIST.ipynb for data exploration)
-    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    if which == "fmnist":
+        (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    elif which == "mnist":
+        (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    else:
+        raise NotImplementedError()
 
     # Logistic regression needs 2D data
     x_train = x_train.reshape(-1, 784)
@@ -50,12 +55,6 @@ def build_mlp(input_dim, output_dim, hidden_dims=[512]):
         model.add_module("nonlinearity_{}".format(id), torch.nn.ReLU())
         previous_dim = D
     model.add_module("final_layer", torch.nn.Linear(D, output_dim, bias=True))
-    return model
-
-def build_logreg(input_dim, output_dim, hidden_dim=512):
-    model = torch.nn.Sequential()
-    model.add_module("linear_2", torch.nn.Linear(input_dim, output_dim, bias=True))
-    model.add_module("nonlinearity_1", torch.nn.Softmax())
     return model
 
 def build_linreg(input_dim, output_dim, hidden_dim=512):
@@ -92,8 +91,10 @@ def predict(model, x_val):
     is_cuda = torch.cuda.is_available()
     if is_cuda:
         x = x.cuda()
-        
+
+    model.training = False
     output = model.forward(x).cpu().data.numpy()
+    model.training = True
 
     if output.shape[1] >= 2:
         return output.argmax(axis=1)
