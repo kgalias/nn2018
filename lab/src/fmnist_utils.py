@@ -47,6 +47,21 @@ def get_data(N=1000, which="fmnist"):
     
     return (x_train, y_train), (x_test, y_test)
 
+def build_conv(input_dim, output_dim, n_filters=16, hidden_dims=[128]):
+    model = torch.nn.Sequential()
+    previous_dim = input_dim
+    
+    # Convolution part
+    model.add("conv2d", torch.nn.Conv2d(1, n_filters, kernel_size=5, padding=2))
+    
+    # Classifier part
+    for id, D in enumerate(hidden_dims):
+        model.add_module("linear_{}".format(id), torch.nn.Linear(previous_dim, D, bias=True))
+        model.add_module("nonlinearity_{}".format(id), torch.nn.ReLU())
+        previous_dim = D
+    model.add_module("final_layer", torch.nn.Linear(D, output_dim, bias=True))
+    return model
+
 def build_mlp(input_dim, output_dim, hidden_dims=[512]):
     model = torch.nn.Sequential()
     previous_dim = input_dim
