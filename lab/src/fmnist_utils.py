@@ -18,6 +18,10 @@ from keras.utils import np_utils
 
 import matplotlib.pylab as plt
 
+class Flatten(nn.Module):
+    def forward(self, input):
+        return input.view(input.size(0), -1)
+
 def get_data(N=1000, which="fmnist"):
     # Get FashionMNIST (see 1b_FMNIST.ipynb for data exploration)
     if which == "fmnist":
@@ -53,6 +57,7 @@ def build_conv(input_dim, output_dim, n_filters=16, hidden_dims=[128]):
     
     # Convolution part
     model.add("conv2d", torch.nn.Conv2d(1, n_filters, kernel_size=5, padding=2))
+    model.add("flatten", Flatten())
     
     # Classifier part
     for id, D in enumerate(hidden_dims):
@@ -127,7 +132,7 @@ def train(model, loss, optim,
         History containing 'acc' and 'test_acc' keys.
     """
     torch.manual_seed(42) 
-    n_examples, n_features = x_train.size()
+    n_examples = len(x_train)
     history = {"acc": [], "test_acc": []}
     for i in tqdm.tqdm(range(n_epochs), total=n_epochs):
         
