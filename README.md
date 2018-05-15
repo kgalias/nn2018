@@ -14,6 +14,10 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 * 8: 14.05, 23:59
 * 9a & 9b: 28.05, 23:59
 
+## Srodowisko
+
+Proszę używać PyTorch w wersji 0.3.1.
+
 ## Dodatkowe materiały
 
 * Kurs deeplearning.ai: https://www.coursera.org/learn/neural-networks-deep-learning
