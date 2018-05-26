@@ -141,12 +141,14 @@ def train(model, loss, optim,
         x_train = torch.from_numpy(x_train.numpy()[ids])
         y_train = torch.from_numpy(y_train.numpy()[ids])
         
+        model.train()
         cost = 0.
         num_batches = n_examples // batch_size
         for k in range(num_batches):
             start, end = k * batch_size, (k + 1) * batch_size
             cost += step(model, loss, optim, x_train[start:end], y_train[start:end])
         
+        model.eval()
         predY = predict(model, x_test)
         test_acc = np.mean(predY == y_test.numpy())
         history['test_acc'].append(test_acc)
