@@ -3,6 +3,10 @@ NN 2018
 
 Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 
+## Dodatkowy projekt
+
+Opis projektu można znaleźć pod https://github.com/gmum/nn2018/blob/master/lab/9b_conv.ipynb
+
 ## Terminy
 
 (Zestaw 11b będzie ostatnim)
