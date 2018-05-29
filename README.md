@@ -5,6 +5,8 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 
 ## Terminy
 
+(Zestaw 11b będzie ostatnim)
+
 * 2: 5.03, 23:59
 * 3: 12.03, 23:59
 * 4: 26.03, 23:59
@@ -14,6 +16,7 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 * 8: 21.05, 23:59
 * 9a & 9b: 28.05, 23:59
 * 10a & 10b: 11.06, 23:59
+* 11a & 11b: 11.06, 23:59
 
 ## Srodowisko
 
