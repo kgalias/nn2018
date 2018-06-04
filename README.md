@@ -7,6 +7,10 @@ Repozytorium kursu "Sieci Neuronowe", semestr letni 2017/18.
 
 Opis projektu można znaleźć pod https://github.com/gmum/nn2018/blob/master/lab/9b_conv.ipynb
 
+## Oceny
+
+Link do arkusza z punktacją i progami: https://docs.google.com/spreadsheets/d/1pIctGUJxywyAR8DblaeyP5tu_geMAoXu8phfT5EdGsg/edit?usp=sharing
+
 ## Terminy
 
 (Zestaw 11b będzie ostatnim)
