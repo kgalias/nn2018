@@ -28,7 +28,7 @@ Link do arkusza z punktacją i progami: https://docs.google.com/spreadsheets/d/1
 * 8: 21.05, 23:59
 * 9a & 9b: 28.05, 23:59
 * 10a & 10b: 11.06, 23:59
-* 11a: 11.06, 23:59
+* 11a: 18.06, 23:59
 
 ## Srodowisko
 
