@@ -17,8 +17,6 @@ Link do arkusza z punktacją i progami: https://docs.google.com/spreadsheets/d/1
 
 ## Terminy
 
-(Zestaw 11b będzie ostatnim)
-
 * 2: 5.03, 23:59
 * 3: 12.03, 23:59
 * 4: 26.03, 23:59
