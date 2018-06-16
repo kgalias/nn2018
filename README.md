@@ -9,7 +9,7 @@ Opis projektu można znaleźć pod https://github.com/gmum/nn2018/blob/master/la
 
 ## Egzamin
 
-Egzamin odbędzie się 18.06 od 10:15-12:30 (sala będzie ogłoszona wkrótce). Zagadnienia w pliku zagadnienia.pdf.
+Egzamin odbędzie się 18.06 od 10:15-12:30 (sala 1177). Zagadnienia w pliku zagadnienia.pdf.
 
 ## Oceny
 
